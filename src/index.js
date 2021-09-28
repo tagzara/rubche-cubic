@@ -5,6 +5,8 @@ const routes = require('./routes');
 const initHandlebars = require('./configuration/handlebars.js');
 
 const app = express();
+// it makes possible parsing data
+app.use(express.urlencoded({extended: true}));
 
 initHandlebars(app);
 
