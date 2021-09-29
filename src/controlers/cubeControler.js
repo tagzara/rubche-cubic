@@ -19,10 +19,16 @@ const createCube = (req, res) => {
     cubeService.create(name, description, imageUrl, difficulty);
 
     res.redirect('/cube/create');
-}
+};
+
+const cubeDetails = (req, res) => {
+   let cube = cubeService.getOne(req.params.cubeId);
+    res.render('details', { ...cube });
+};
 
 // that function will be exposed with router to the page route
 router.get('/create', getCreateCubePage);
 router.post('/create', createCube);
+router.get('/:cubeId', cubeDetails);
 
 module.exports = router;
